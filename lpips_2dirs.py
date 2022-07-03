@@ -23,12 +23,12 @@ f = open(opt.out,'w')
 files = os.listdir(opt.dir0)
 files1 = os.listdir(opt.dir1)
 
-print(files)
-print(files1)
+# print(files)
+# print(files1)
 
 for file in files:
 	# print(file)
-	print((os.path.join(opt.dir0,file)))
+	# print((os.path.join(opt.dir0,file)))
 	# if(os.path.exists(os.path.join(opt.dir1,file))):
 
 		# print(file)
@@ -37,7 +37,7 @@ for file in files:
 		# print(file1)
 		img0 = lpips.im2tensor(lpips.load_image(os.path.join(opt.dir0,file))) # RGB image from [-1,1]
 		img1 = lpips.im2tensor(lpips.load_image(os.path.join(opt.dir1,file1)))
-		print((os.path.join(opt.dir0,file)),(os.path.join(opt.dir1,file1)))
+		# print((os.path.join(opt.dir0,file)),(os.path.join(opt.dir1,file1)))
 
 		if(opt.use_gpu):
 		  img0 = img0.cuda()
@@ -45,7 +45,7 @@ for file in files:
 
 		# Compute distance
 		dist01 = loss_fn.forward(img0,img1)
-		print('%s: %.3f'%(file,dist01))
+		# print('%s: %.3f'%(file,dist01))
 		f.writelines('%s:%s: %.6f\n'%(file,file1,dist01))
 
 f.close()
