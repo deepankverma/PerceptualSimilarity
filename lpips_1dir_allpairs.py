@@ -44,15 +44,15 @@ for (ff,file) in enumerate(files[:-1]):
 
 		# Compute distance
 		dist01 = loss_fn.forward(img0,img1)
-		print('(%s,%s): %.3f'%(file,file1,dist01))
-		f.writelines('(%s,%s): %.6f\n'%(file,file1,dist01))
+		# print('(%s,%s): %.3f'%(file,file1,dist01))
+		f.writelines('%s:%s:%.6f\n'%(file,file1,dist01))
 
 		dists.append(dist01.item())
 
 avg_dist = np.mean(np.array(dists))
 stderr_dist = np.std(np.array(dists))/np.sqrt(len(dists))
 
-print('Avg: %.5f +/- %.5f'%(avg_dist,stderr_dist))
-f.writelines('Avg: %.6f +/- %.6f'%(avg_dist,stderr_dist))
+# print('Avg: %.5f +/- %.5f'%(avg_dist,stderr_dist))
+# f.writelines('Avg: %.6f +/- %.6f'%(avg_dist,stderr_dist))
 
 f.close()
